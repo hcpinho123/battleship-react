@@ -1,15 +1,9 @@
-import { useState } from "react";
 import GameBoard from "../interfaces/GameBoard.interface";
 import Tile from "../interfaces/Tile.interface";
-import getPositionsForShip from "../lib/getPositionsForShip.lib";
 import { OrientationType } from "../types/OrientationType.enum";
 import { Player } from "../types/PlayerType.type";
 import { PositionType } from "../types/PositionType.type";
 import { TileBox } from "./TileBox";
-import updateTile from "../lib/updateTile.lib";
-import { TileType } from "../types/TileType.enum";
-import placeShip from "../lib/placeShip.lib";
-import checkPositions from "../lib/checkPositions.lib";
 
 export function Grid(props: {
   gameGrid: Tile[][];

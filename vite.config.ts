@@ -7,5 +7,5 @@ export default defineConfig({
     environment: "jsdom",
   },
   plugins: [react()],
-  base: "/battleship",
+  base: "/battleship-react/",
 });

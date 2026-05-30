@@ -21,5 +21,4 @@ export default interface Ship {
   spaces: number;
   positions: PositionType[];
   hits: boolean[];
-  map: any;
 }
