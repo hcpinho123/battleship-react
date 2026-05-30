@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Impeccable skills (local dev tool, not part of source)
+.claude/skills/impeccable/
+.impeccable/
