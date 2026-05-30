@@ -1,7 +1,5 @@
 import getOtherPlayer from "../lib/getOtherPlayer.lib";
 import { Player } from "../types/PlayerType.type";
-import { TurnType } from "../types/TurnType";
-import { Intermidiate } from "./Intermidiate";
 
 export function ControlPanel(props: {
   currentPlayer: Player;

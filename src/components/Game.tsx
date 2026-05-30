@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import GameBoard from "../interfaces/GameBoard.interface";
-import { Grid } from "./Grid";
 import { Player } from "../types/PlayerType.type";
 import { ShipPlacementPanel } from "./ShipPlacementPanel";
 import { OrientationType } from "../types/OrientationType.enum";

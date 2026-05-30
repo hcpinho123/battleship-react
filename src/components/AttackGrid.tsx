@@ -4,14 +4,10 @@ import { Player } from "../types/PlayerType.type";
 import { PositionType } from "../types/PositionType.type";
 import { Grid } from "./Grid";
 import { OrientationType } from "../types/OrientationType.enum";
-import getPositionsForShip from "../lib/getPositionsForShip.lib";
-import placeShip from "../lib/placeShip.lib";
-import { useEffect, useState } from "react";
 import updateTile from "../lib/updateTile.lib";
 import { TileType } from "../types/TileType.enum";
 import attemptToHitShip from "../lib/attemptToHitShip.lib";
 import getOtherPlayer from "../lib/getOtherPlayer.lib";
-import checkPositions from "../lib/checkPositions.lib";
 import getTile from "../lib/getTile.lib";
 
 export function AttackGrid(props: {

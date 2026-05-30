@@ -1,7 +1,5 @@
 import Ship from "../interfaces/Ship.interface";
 import { OrientationType } from "../types/OrientationType.enum";
-import { useState } from "react";
-import { ShipType } from "../types/ShipType.enum";
 
 export function ShipPlacementPanel(props: {
   ships: Ship[];

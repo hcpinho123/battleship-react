@@ -6,7 +6,6 @@ import { Grid } from "./Grid";
 import { OrientationType } from "../types/OrientationType.enum";
 import getPositionsForShip from "../lib/getPositionsForShip.lib";
 import placeShip from "../lib/placeShip.lib";
-import { useState } from "react";
 import updateTile from "../lib/updateTile.lib";
 import { TileType } from "../types/TileType.enum";
 
