@@ -1,0 +1,286 @@
+/* ─── Design tokens (scoped to intro) ─────────────────────── */
+.is-root {
+  --bg:             oklch(0.07 0.010 280);
+  --surface:        oklch(0.12 0.018 280);
+  --ink:            oklch(0.93 0.006 280);
+  --ink-secondary:  oklch(0.78 0.010 280);
+  --muted:          oklch(0.58 0.015 280);
+  --primary:        oklch(0.50 0.20 279);
+  --primary-bright: oklch(0.64 0.20 279);
+  --primary-glow:   oklch(0.50 0.20 279 / 0.4);
+  --accent:         oklch(0.75 0.14 55);
+  --divider:        oklch(0.93 0.006 280 / 0.09);
+  --radar-ring:     oklch(0.50 0.20 279 / 0.16);
+  --grid-line:      oklch(0.93 0.006 280 / 0.04);
+}
+
+/* ─── Root ─────────────────────────────────────────────────── */
+.is-root {
+  position: relative;
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Barlow', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ─── Decorative background ────────────────────────────────── */
+.is-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Coordinate grid */
+.is-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Radar / sonar circle */
+.is-radar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(720px, 105vmin);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid var(--radar-ring);
+}
+
+.is-radar-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--radar-ring);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.is-radar-ring-a { width: 33%;  aspect-ratio: 1; }
+.is-radar-ring-b { width: 66%;  aspect-ratio: 1; }
+.is-radar-ring-c { width: 100%; aspect-ratio: 1; }
+
+/* Crosshair lines */
+.is-radar-crosshair {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background-image:
+    linear-gradient(var(--radar-ring) 1px, transparent 1px),
+    linear-gradient(90deg, var(--radar-ring) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%;
+  background-position: center center;
+}
+
+/* Sweep beam */
+.is-radar-sweep {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 335deg,
+    oklch(0.50 0.20 279 / 0.06) 350deg,
+    oklch(0.50 0.20 279 / 0.28) 360deg
+  );
+  animation: is-sweep 7s linear infinite;
+}
+
+/* ─── Keyframes ────────────────────────────────────────────── */
+@keyframes is-sweep {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes is-fade-up {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes is-order-in {
+  from { opacity: 0; transform: translateX(-10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ─── Content shell ────────────────────────────────────────── */
+.is-content {
+  position: relative;
+  z-index: 1;
+  width: min(620px, calc(100vw - 2.5rem));
+  padding: clamp(2.5rem, 6vw, 5rem) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.75rem;
+}
+
+/* ─── Header ───────────────────────────────────────────────── */
+.is-header {
+  text-align: center;
+  width: 100%;
+  animation: is-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.is-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(3.75rem, 13vw, 7.5rem);
+  letter-spacing: 0.1em;
+  line-height: 1;
+  color: var(--ink);
+  margin: 0;
+  text-wrap: balance;
+}
+
+.is-title-rule {
+  height: 3px;
+  background: var(--primary);
+  margin: 1.375rem auto;
+  width: clamp(72px, 18%, 140px);
+}
+
+.is-subtitle {
+  font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0;
+  font-weight: 300;
+  letter-spacing: 0.015em;
+  text-wrap: pretty;
+}
+
+/* ─── Mission briefing ─────────────────────────────────────── */
+.is-briefing {
+  width: 100%;
+  animation: is-fade-up 0.8s 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.is-briefing-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Orders list */
+.is-orders {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.is-order {
+  display: grid;
+  grid-template-columns: 2.75rem 1fr;
+  column-gap: 1rem;
+  align-items: start;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--divider);
+  opacity: 0;
+  animation: is-order-in 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.is-order:first-child {
+  border-top: 1px solid var(--divider);
+}
+
+.is-order:nth-child(1) { animation-delay: 0.45s; }
+.is-order:nth-child(2) { animation-delay: 0.60s; }
+.is-order:nth-child(3) { animation-delay: 0.75s; }
+.is-order:nth-child(4) { animation-delay: 0.90s; }
+
+.is-order-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1.45rem;
+  line-height: 1.25;
+  color: var(--primary-bright);
+  letter-spacing: 0.03em;
+  padding-top: 0.05em;
+}
+
+.is-order-body {
+  font-size: 0.94rem;
+  line-height: 1.7;
+  color: var(--ink);
+  margin: 0;
+  font-weight: 400;
+}
+
+.is-order-body strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.is-order-detail {
+  color: var(--ink-secondary);
+}
+
+/* ─── CTA button ───────────────────────────────────────────── */
+.is-cta {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: oklch(0.96 0.004 280);
+  background: var(--primary);
+  border: none;
+  cursor: pointer;
+  padding: 1rem 0;
+  width: 100%;
+  max-width: 340px;
+  transition:
+    background   0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow   0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    transform    0.12s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: is-fade-up 0.6s 1.05s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.is-cta:hover {
+  background: var(--primary-bright);
+  box-shadow:
+    0 0 0 1px oklch(0.64 0.20 279 / 0.5),
+    0 0 28px var(--primary-glow),
+    0 0 6px  var(--primary-glow);
+  transform: translateY(-2px);
+}
+
+.is-cta:active {
+  transform: translateY(0);
+  box-shadow: 0 0 14px var(--primary-glow);
+}
+
+.is-cta:focus-visible {
+  outline: 2px solid var(--primary-bright);
+  outline-offset: 3px;
+}
+
+/* ─── Reduced motion ───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .is-header,
+  .is-briefing,
+  .is-order,
+  .is-cta {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .is-radar-sweep {
+    animation: none;
+  }
+}
