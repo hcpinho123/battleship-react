@@ -33,3 +33,76 @@ Ships available: Carrier (5), Battleship (4), Cruiser (3), Submarine (3), Destro
 **Prerequisites:** Node.js 18+ and Yarn
 
 ```bash
+# Clone the repo
+git clone https://github.com/hcpinho123/battleship-react.git
+cd battleship-react
+
+# Install dependencies
+yarn
+
+# Start the dev server
+yarn dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+---
+
+## Scripts
+
+| Command | Description |
+|---|---|
+| `yarn dev` | Start local dev server |
+| `yarn build` | Type-check and build for production |
+| `yarn preview` | Preview the production build locally |
+| `yarn test` | Run tests with Vitest UI |
+| `yarn deploy` | Build and deploy to GitHub Pages |
+
+---
+
+## Project structure
+
+```
+src/
+├── components/       # React components (Game, Grid, IntroScreen, ...)
+├── interfaces/       # TypeScript interfaces (GameBoard, Ship, Tile, ...)
+├── lib/              # Pure game logic (placeShip, attemptToHitShip, ...)
+├── types/            # Enums and type aliases
+└── main.tsx          # Entry point
+```
+
+---
+
+## Branching strategy
+
+This project follows **Git Flow**:
+
+- `main` — production-ready code
+- `develop` — integration branch for features
+- `feature/*` — individual feature branches, branched from `develop`
+
+```bash
+# Start a new feature
+git flow feature start my-feature
+
+# Finish and merge back to develop
+git flow feature finish my-feature
+```
+
+---
+
+## Deployment
+
+The app is deployed to GitHub Pages via the `gh-pages` branch.
+
+```bash
+yarn deploy
+```
+
+Live at: **https://hcpinho123.github.io/battleship-react/**
+
+---
+
+## License
+
+MIT
